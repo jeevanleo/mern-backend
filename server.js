@@ -1,10 +1,14 @@
 const express = require("express");
 const http = require("http");
-const socketIo = require("socket.io");
+const socketIO = require("socket.io");
+const cors = require("cors"); // Import the cors middleware
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIO(server);
+
+// Add CORS middleware
+app.use(cors());
 
 io.on("connection", (socket) => {
   console.log("User Online");
@@ -14,7 +18,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const serverPort = process.env.YOUR_PORT || process.env.PORT || 5000;
-server.listen(serverPort, () => {
-  console.log(`Server started on port: ${serverPort}`);
+const server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
+server.listen(server_port, () => {
+  console.log("Started on : " + server_port);
 });

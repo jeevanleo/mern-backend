@@ -7,16 +7,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
-    origin: "http://localhost:3000", // Allow requests from this origin
+    origin: "https://whiteboardjs.netlify.app/", // Allow requests from this origin
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-// Apply CORS middleware to the app
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow requests from this origin
+    origin: "https://whiteboardjs.netlify.app/", // Allow requests from this origin
     methods: ["GET", "POST"],
     credentials: true,
   })

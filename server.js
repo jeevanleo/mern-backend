@@ -7,8 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-const cors = require("cors");
-app.use(cors());
+app.use(cors()); // Apply CORS middleware to the app
 
 io.on("connection", (socket) => {
   console.log("User Online");
